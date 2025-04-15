@@ -244,3 +244,15 @@ def transactions(wallet_id):
         query = query.filter(db.func.date(Transaction.timestamp) == filter_date_obj)
 
     transactions_list = query.order_by(Transaction.timestamp.desc()).all()
+
+    # Format transcation records for response
+    result = [{
+        "id": t.id,
+        "amount": str(t.amount),
+        "type": t.transaction_type,
+        "timestamp": t.timestamp.isoformat(),
+        "description": t.description,
+        "provider": t.provider
+    } for t in transactions_list]
+
+    return jsonify(result), 200
