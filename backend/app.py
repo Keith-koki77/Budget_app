@@ -105,3 +105,20 @@ def register():
     user = User(username=username)
     db.session.add(user)
     db.session.commit()
+
+    # Create an associated wallet with a starting balance of 0 abd the provided daily cap.
+    try:
+        daily_cap_decimal = Decimal(daily_cap)
+    except Exception:
+        return jsonify({"error": "Invalid daily_cap format"}), 400
+    
+    wallet = Wallet(user_id=user.id, balance=Decimal('0.00'), daily_cap=daily_cap_decimal)
+    db.session.add(wallet)
+    db.session.commit()
+
+    return jsonify({
+        "message": "User registered successfully",
+        "user_id": user.id,
+        "wallet_id": wallet.id,
+        "daily_cap": str(wallet.daily_cap)
+    }), 201
