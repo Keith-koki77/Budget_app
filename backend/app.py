@@ -221,3 +221,26 @@ def spend():
         "message": "Expense recorded successfully",
         "new_balance": str(wallet.balance)
     }), 200
+
+@app.route('/transactions/<int:wallet_id>', methods=['GET'])
+def transactions(wallet_id):
+    """
+    Get transcation history for a wallet.
+    Optional query paramater: date (YYYY-MM-DD)
+    Example: /transactions/?date=2025-04-15
+    """
+    wallet = Wallet.query.get(wallet_id)
+    if not wallet:
+        return jsonify({"error": "Wallet not found"}), 404
+    
+    query = Transaction.query.filter_by(wallet_id=wallet_id)
+    filter_date = request.args.get("date")
+
+    if filter_date:
+        try:
+            filter_date_obj = datetime.strptime(filter_date, "%Y-%m-%d").date()
+        except ValueError:
+            return jsonify({"error": "Invalid date format. Use YYYY-MM-DD"}), 400
+        query = query.filter(db.func.date(Transaction.timestamp) == filter_date_obj)
+
+    transactions_list = query.order_by(Transaction.timestamp.desc()).all()
