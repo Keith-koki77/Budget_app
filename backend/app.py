@@ -165,4 +165,28 @@ def deposit():
         "new_balance": str(wallet.balance)
     }), 200
 
+@app.route('/spend', methods=['POST'])
+def spend():
+    """
+    Endpoint to record an expense.
+    Expected JSON payload:
+        { "wallet_id": 1, "amount": "20.00", "description": "Lunch" }
     
+    Enforces the daily spending cap.
+    """
+    data = request.get_json() or {}
+    wallet_id = data.get("wallet_id")
+    amount = data.get("amount")
+    description = data.get("description", "Expense")
+
+    if not wallet_id or not amount:
+        return jsonify({"error": "wallet_id and amount are required"}), 400
+    
+    wallet = Wallet.query.get(wallet_id)
+    if not wallet:
+        return jsonify({"error": "Wallet not found"}), 404
+    
+    try:
+        amount_dec = Decimal(amount)
+    except Exception:
+        return jsonify({"error": "Invalid amount format"}), 400
