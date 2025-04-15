@@ -21,9 +21,12 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 from flask import render_template
+from flask_cors import CORS
+
 
 # Initialize Flask app and configure the SQLite database
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budgeting_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

@@ -2,193 +2,190 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Kularashio - Budget & Meal Solutions</title>
-        <!-- Tailwind CSS CDN -->
-        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-        <!-- Custom Tailwind configuration via inline CSS for our colors (if needed) -->
-        <style>
-            /* Custom colors if desired */
-            .bg-brand-red { background-color: #e3342f; }   /* strong red */
-            .text-brand-yellow { color: #ffed4a; }          /* bright yellow */
-            .bg-brand-yellow { background-color: #ffed4a; }
-            .bg-brand-white { background-color: #ffffff; }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Kularashio - Budget & Meal Solutions</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
 
-    <body class="bg-brand-white text-gray-800">
-        <!--Navigation -->
-        <header class="bg-brand-red text-brand-yellow p-6">
-            <div class="container mx-auto flex justify-between items-center">
-              <h1 class="text-3xl font-bold">Kularashio</h1>
-              <nav>
-                <ul class="flex space-x-4">
-                  <li><a href="#problem" class="hover:underline">The Problem</a></li>
-                  <li><a href="#solution" class="hover:underline">The Solution</a></li>
-                  <li><a href="#product" class="hover:underline">The Product</a></li>
-                  <li><a href="#testimonials" class="hover:underline">Testimonials</a></li>
-                  <li><a href="#partners" class="hover:underline">Partners</a></li>
-                  <li><a href="#cta" class="hover:underline">Get Started</a></li>
-                </ul>
-              </nav>
-            </div>
+    <body>
+        <header>
+            <div class="header-container">
+                <h1 class="logo">Kularashio</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#problem">The Problem</a></li>
+                        <li><a href="#solution">The Solution</a></li>
+                        <li><a href="#product">The Product</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#cta" class="nav-cta">Get Started</a></li> </ul>
+                </nav>
+              </div>
         </header>
 
-        <!--Slider Section-->
-        <section class="relative container mx-auto my-12 overflow-hidden">
-            <!--Slider Wrapper-->
-            <div id="slider" class="reative">
-                <!--Slide 1: The Problem-->
-                <div class="slide absolute top-0 left-0 w-full transition-opacity duration-1000 opacity-0" data-index="0">
-                    <div class="p-8 bg-brand-white rounded shadow-lg">
-                      <h2 id="problem" class="text-3xl font-bold mb-4">Life Happens. Food Shouldn’t Be Optional.</h2>
-                      <ul class="list-disc pl-6 mb-6">
-                        <li>Unexpected expenses force people to cut food budgets.</li>
-                        <li>Millions skip meals or eat unhealthy because money ran out.</li>
-                        <li>No system currently guarantees consistent access to nutritious meals.</li>
-                        <li>Food insecurity affects health, focus, productivity, and dignity.</li>
-                      </ul>
-                      <button onclick="location.href='#cta'" class="bg-brand-red text-brand-yellow px-6 py-2 rounded hover:opacity-90">Learn More</button>
-                    </div>
-                </div>
-                <!--Slide 2: The Solution-->
-                <div class="slide absolute top-0 left-0 w-full transition-opacity duration-1000 opacity-0" data-index="1">
-                    <div class="p-8 bg-brand-white rounded shadow-lg">
-                      <h2 id="solution" class="text-3xl font-bold mb-4">A Meal Subscription That Has Your Back.</h2>
-                      <ul class="list-disc pl-6 mb-6">
-                        <li>Kularashio lets users subscribe to affordable, prepaid meal plans.</li>
-                        <li>Meals stay consistent even when finances fluctuate.</li>
-                        <li>Helps users stick to a food budget and avoid last-minute food stress.</li>
-                        <li>Partners with restaurants to provide reliable, quality meals.</li>
-                      </ul>
-                      <button onclick="location.href='#cta'" class="bg-brand-red text-brand-yellow px-6 py-2 rounded hover:opacity-90">Subscribe Now</button>
-                    </div>
-                </div>
-                <!--Slide 3: The Product-->
-                <div class="slide absolute top-0 left-0 w-full transition-opacity duration-1000 opacity-0" data-index="2">
-                    <div class="p-8 bg-brand-white rounded shadow-lg">
-                      <h2 id="product" class="text-3xl font-bold mb-4">A Smart Platform That Feeds and Empowers.</h2>
-                      <ul class="list-disc pl-6 mb-6">
-                        <li>AI-powered assistant curates personalized meal plans.</li>
-                        <li>Users choose dietary needs, frequency, and pickup/delivery options.</li>
-                        <li>Tracks food budgets and prevents overspending.</li>
-                        <li>Connects users to local restaurants and ensures real-time access to meals.</li>
-                        <li>Available on mobile & web. Built for simplicity, speed, and scale.</li>
-                      </ul>
-                      <button onclick="location.href='#cta'" class="bg-brand-red text-brand-yellow px-6 py-2 rounded hover:opacity-90">Try It Today</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Navigation Button for Slider-->
-            <div class="absolute inset-0 flex items-center justify-between px-4">
-                <button id="prev" class="bg-brand-red text-brand-yellow p-2 rounded-full hover:opacity-90">&larr;</button>
-                <button id="next" class="bg-brand-red text-brand-yellow p-2 rounded-full hover:opacity-90">&rarr;</button>
-            </div>
-        </section>
-
-        <!--Image Section (Product Visual)-->
-        <section class="container mx-auto my-12 px-4">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-              <img src="https://via.placeholder.com/300x200.png?text=Product+Image+1" alt="Product Image 1" class="rounded shadow-lg">
-              <img src="https://via.placeholder.com/300x200.png?text=Product+Image+2" alt="Product Image 2" class="rounded shadow-lg">
-              <img src="https://via.placeholder.com/300x200.png?text=Product+Image+3" alt="Product Image 3" class="rounded shadow-lg">
-            </div>
-        </section>
-
-        <!--Testimonials Section-->
-        <section id="testimonials" class="bg-gray-100 py-12">
-            <div class="container mx-auto px-4">
-                <h3 class="text-2xl font-bold text-center mb-8">What Our Customers Are Saying</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <!-- Testimonial 1 -->
-                  <div class="bg-brand-white p-6 rounded shadow">
-                    <p>"Kularashio transformed my meal planning. I no longer worry about unexpected expenses ruining my lunch!"</p>
-                    <p class="mt-4 font-bold">– Alex R.</p>
-                  </div>
-                  <!-- Testimonial 2 -->
-                  <div class="bg-brand-white p-6 rounded shadow">
-                    <p>"The personalized meal plans and budget tracking help me stick to my diet without stressing about my finances."</p>
-                    <p class="mt-4 font-bold">– Jamie L.</p>
-                  </div>
-                  <!-- Testimonial 3 -->
-                  <div class="bg-brand-white p-6 rounded shadow">
-                    <p>"Finally, a service that considers both my budget and nutritional needs. Highly recommend!"</p>
-                    <p class="mt-4 font-bold">– Sam K.</p>
-                  </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Partners Section-->
-        <section id="partners" class="py-12">
-            <div class="container mx-auto px-4">
-                <h3 class="text-2xl font-bold text-center mb-8">Our Partners</h3>
-                <div class="flex justify-center items-center gap-8">
-                  <!-- Instead of logos, you can later replace the text with img tags or actual logos -->
-                  <div class="flex flex-col items-center">
-                    <img src="https://via.placeholder.com/100x50?text=BurgerKing" alt="BurgerKing Logo" class="mb-2">
-                    <span>BurgerKing</span>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <img src="https://via.placeholder.com/100x50?text=KFC" alt="KFC Logo" class="mb-2">
-                    <span>KFC</span>
-                  </div>
-                  <div class="flex flex-col items-center">
-                    <img src="https://via.placeholder.com/100x50?text=Artcafe" alt="Artcafe Logo" class="mb-2">
-                    <span>Artcafe</span>
-                  </div>
-                </div>
-              </div>
-        </section>
-
-        <!-- Call-to-Action (CTA) Section-->
-        <section id="cta" class="bg-brand-red text-brand-yellow py-12">
-            <div class="container mx-auto text-center">
-              <h2 class="text-3xl font-bold mb-4">Ready To Take Control?</h2>
-              <p class="mb-8">Join Kularashio today and experience a smarter, stress-free way to budget your meals!</p>
-              <button onclick="location.href='signup.html'" class="bg-brand-yellow text-brand-red px-8 py-3 rounded font-bold hover:opacity-90">Sign Up Now</button>
-            </div>
+        <section class="full-width-image-section">
+            <img src="your-full-width-image.jpg" alt="Landing Page Banner">
         </section>
         
-        <!--Footer -->
-        <footer class="bg-gray-800 text-gray-200 py-4">
-            <div class="container mx-auto text-center">
-              <p>&copy; 2025 Kularashio. All rights reserved.</p>
+        <section class="slider-section">
+            <div id="slider">
+                <div class="slide active" data-index="0"> <div class="slide-content">
+                        <h2 id="problem">Life Happens. Food Shouldn’t Be Optional.</h2>
+                        <ul>
+                            <li>Unexpected expenses force people to cut food budgets.</li>
+                            <li>Millions skip meals or eat unhealthy because money ran out.</li>
+                            <li>No system currently guarantees consistent access to nutritious meals.</li>
+                            <li>Food insecurity affects health, focus, productivity, and dignity.</li>
+                        </ul>
+                        <button onclick="location.href='#cta'" class="btn btn-primary">Learn More</button>
+                    </div>
+                </div>
+                <div class="slide" data-index="1">
+                    <div class="slide-content">
+                        <h2 id="solution">A Meal Subscription That Has Your Back.</h2>
+                        <ul>
+                            <li>Kularashio lets users subscribe to affordable, prepaid meal plans.</li>
+                            <li>Meals stay consistent even when finances fluctuate.</li>
+                            <li>Helps users stick to a food budget and avoid last-minute food stress.</li>
+                            <li>Partners with restaurants to provide reliable, quality meals.</li>
+                        </ul>
+                        <button onclick="location.href='#cta'" class="btn btn-primary">Subscribe Now</button>
+                    </div>
+                </div>
+                <div class="slide" data-index="2">
+                    <div class="slide-content">
+                        <h2 id="product">A Smart Platform That Feeds and Empowers.</h2>
+                        <ul>
+                            <li>AI-powered assistant curates personalized meal plans.</li>
+                            <li>Users choose dietary needs, frequency, and pickup/delivery options.</li>
+                            <li>Tracks food budgets and prevents overspending.</li>
+                            <li>Connects users to local restaurants and ensures real-time access to meals.</li>
+                            <li>Available on mobile & web. Built for simplicity, speed, and scale.</li>
+                        </ul>
+                        <button onclick="location.href='#cta'" class="btn btn-primary">Try It Today</button>
+                    </div>
+                </div>
             </div>
+            <div class="slider-nav">
+                <button id="prev" class="slider-btn">&larr;</button>
+                <button id="next" class="slider-btn">&rarr;</button>
+            </div>
+        </section>
+
+        <section class="image-gallery-section container">
+            <div class="image-gallery">
+                 <img src="https://via.placeholder.com/350x250/E3342F/FFFFFF?text=App+Screenshot+1" alt="Product Image 1" loading="lazy">
+                 <img src="https://via.placeholder.com/350x250/FFED4A/333333?text=Meal+Example+2" alt="Product Image 2" loading="lazy">
+                 <img src="https://via.placeholder.com/350x250/4A5568/FFFFFF?text=Interface+Detail+3" alt="Product Image 3" loading="lazy">
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h3>What Our Customers Are Saying</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <blockquote>"Kularashio transformed my meal planning. I no longer worry about unexpected expenses ruining my lunch!"</blockquote>
+                        <cite>– Alex R.</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"The personalized meal plans and budget tracking help me stick to my diet without stressing about my finances."</blockquote>
+                        <cite>– Jamie L.</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"Finally, a service that considers both my budget and nutritional needs. Highly recommend!"</blockquote>
+                        <cite>– Sam K.</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="partners-section">
+            <div class="container">
+                <h3>Our Partners</h3>
+                <div class="partners-logos">
+                    <div class="partner-item">
+                        <img src="https://via.placeholder.com/120x60/CCCCCC/FFFFFF?text=BurgerKing" alt="BurgerKing Logo" loading="lazy">
+                        <span>BurgerKing</span>
+                    </div>
+                    <div class="partner-item">
+                        <img src="https://via.placeholder.com/120x60/CCCCCC/FFFFFF?text=KFC" alt="KFC Logo" loading="lazy">
+                        <span>KFC</span>
+                    </div>
+                    <div class="partner-item">
+                        <img src="https://via.placeholder.com/120x60/CCCCCC/FFFFFF?text=Artcafe" alt="Artcafe Logo" loading="lazy">
+                        <span>Artcafe</span>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2>Ready To Take Control?</h2>
+                <p>Join Kularashio today and experience a smarter, stress-free way to budget your meals!</p>
+                <button onclick="location.href='signup.html'" class="btn btn-secondary">Sign Up Now</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Kularashio. All rights reserved.</p>
+                </div>
         </footer>
 
-        <!--Javascript for Slider Functionality-->
         <script>
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
             const totalSlides = slides.length;
-            const slideDuration = 5000;
+            const slideDuration = 5000; // 5 seconds
+            let slideInterval;
 
-            // Function to show the slide with given index
+            // Function to show the slide with given index using class manipulation
             function showSlide(index) {
                 slides.forEach((slide, idx) => {
-                    slide.style.opacity = idx === index ? '1' : '0';
+                    slide.classList.remove('active');
+                    if (idx === index) {
+                        slide.classList.add('active');
+                    }
                 });
+                // Reset interval timer on manual navigation or initial load
+                resetInterval();
             }
 
-            // Next and Previous button actions
-            document.getElementById('next').addEventListener('click', () => {
+            function nextSlide() {
                 currentSlide = (currentSlide + 1) % totalSlides;
                 showSlide(currentSlide);
-            });
-            document.getElementById('prev').addEventListener('click', () => {
+            }
+
+            function prevSlide() {
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                 showSlide(currentSlide);
-            });
+            }
 
-            // Auto Slide every slide duration
-            setInterval(() => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            }, slideDuration);
+            // Start the automatic slide transition
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, slideDuration);
+            }
 
-            // Initialize first slide visible
-            showSlide(currentSlide);
+            // Reset the interval (e.g., after manual navigation)
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+
+            // Event listeners for buttons
+            document.getElementById('next').addEventListener('click', nextSlide);
+            document.getElementById('prev').addEventListener('click', prevSlide);
+
+            // Initialize first slide visible and start auto-sliding
+            showSlide(currentSlide); // Show initial slide
+            // Optional: Uncomment startInterval() if you want auto-sliding on load
+            // startInterval();
+
         </script>
     </body>
 </html>
