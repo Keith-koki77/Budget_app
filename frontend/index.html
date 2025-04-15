@@ -134,6 +134,30 @@
                 }
             });
 
+            // 2. Deposit Funds
+            document.getElementById("depositForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const wallet_id = document.getElementById("depositWalletId").value.trim();
+                const provider = document.getElementById("provider").value.trim();
+                const amount = document.getElementById("depositAmount").value.trim();
+                
+                try {
+                    const response = await fetch("/deposit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ wallet_id, provider, amount })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                    displayMessage("depositMsg", "Deposit successful! New Balance: " + data.new_balance);
+                    } else {
+                    displayMessage("depositMsg", data.error, true);
+                    }
+                } catch (error) {
+                    displayMessage("depositMsg", error.message, true);
+                }
+            });
+
 
         </script>
     </body>
