@@ -101,6 +101,18 @@
             <ul id="transList" class="mt-4 space-y-2"></ul>
           </div>
         </div>
+
+        <!-- JavaScript for integration with backend endpoints -->
+        <script>
+            // Utility Function to display messages
+            function displayMessage(selector, message, isError = false) {
+                const element = document.getElementById(selector);
+                element.textContent = message;
+                element.className = isError ? "text-red-600" : "text-green-600";
+            }
+        </script>
+
+        
     </body>
 
 </html>
