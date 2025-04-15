@@ -158,6 +158,32 @@
                 }
             });
 
+            // 3. Record Expense
+            document.getElementById("expenseForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const wallet_id = document.getElementById("expenseWalletId").value.trim();
+                const amount = document.getElementById("expenseAmount").value.trim();
+                const description = document.getElementById("expenseDesc").value.trim() || "Expense";
+                
+                try {
+                    const response = await fetch("/spend", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ wallet_id, amount, description })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                    displayMessage("expenseMsg", "Expense recorded! New Balance: " + data.new_balance);
+                    } else {
+                    displayMessage("expenseMsg", data.error, true);
+                    }
+                } catch (error) {
+                    displayMessage("expenseMsg", error.message, true);
+                }
+            });
+
+            
+
 
         </script>
     </body>
