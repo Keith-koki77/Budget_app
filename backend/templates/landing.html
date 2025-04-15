@@ -164,7 +164,13 @@
             const totalSlides = slides.length;
             const slideDuration = 5000;
 
-            
+            // Function to show the slide with given index
+            function showSlide(index) {
+                slides.forEach((slide, idx) => {
+                    slide.style.opacity = idx === index ? '1' : '0';
+                });
+            }
+
         </script>
     </body>
 </html>
