@@ -190,3 +190,8 @@ def spend():
         amount_dec = Decimal(amount)
     except Exception:
         return jsonify({"error": "Invalid amount format"}), 400
+    
+    # Check if sufficient balance exixtx
+    if wallet.balance < amount_dec:
+        return jsonify({"error": "Insufficient funds"}), 400
+    
