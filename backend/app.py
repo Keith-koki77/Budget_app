@@ -256,3 +256,14 @@ def transactions(wallet_id):
     } for t in transactions_list]
 
     return jsonify(result), 200
+
+# -------------------------------------------
+# RUN THE APPLICATION
+# -------------------------------------------
+
+if __name__ == '__main__':
+    # Create tables if not present; in real system, use migartions.
+    with app.app_context():
+        db.create_all()
+    # Run the Flask development server (disable debug in production)
+    app.run(debug=True)
