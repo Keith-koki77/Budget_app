@@ -195,3 +195,13 @@ def spend():
     if wallet.balance < amount_dec:
         return jsonify({"error": "Insufficient funds"}), 400
     
+    # Calculate today's total expense and enforce daily cap limit
+    today = date.today()
+    current_daily_spent = get_daily_expense(wallet.id, today)
+    if current_daily_spent + amount_dec > wallet.daily_cap:
+        return jsonify({
+            "error": "Daily cap exceeded",
+            "daily_cap": str(wallet.daily_cap),
+            "already_spent": str(current_daily_spent)
+        }), 400
+    
