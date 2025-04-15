@@ -171,6 +171,16 @@
                 });
             }
 
+            // Next and Previous button actions
+            document.getElementById('next').addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            });
+            document.getElementById('prev').addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            });
+
         </script>
     </body>
 </html>
