@@ -122,3 +122,28 @@ def register():
         "wallet_id": wallet.id,
         "daily_cap": str(wallet.daily_cap)
     }), 201
+
+@app.route('/deposit', methods=['POST'])
+def deposit():
+    """
+    Endpoint to deposit funds into the wallet.
+    Expected JSON payload:
+        { "wallet_id": 1, "provider": "paypal", "amount": "50.00" }
+    """
+    data = request.get_json() or {}
+    wallet_id = data.get("wallet_id")
+    provider = data.get("provider")
+    amount = data.get("amount")
+
+    if not wallet_id or not provider or not amount:
+        return jsonify({"error": "wallet_id, provider, and amount are required"}), 400
+    
+    wallet = Wallet.query.get(wallet_id)
+    if not wallet:
+        return jsonify({"error": "Wallet not found"}), 404
+    
+    try:
+        amount_dec = Decimal(amount)
+    except Exception:
+        return jsonify({"error": "Invalid amount format"}), 400
+    
