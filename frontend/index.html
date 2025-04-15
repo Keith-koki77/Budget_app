@@ -110,9 +110,32 @@
                 element.textContent = message;
                 element.className = isError ? "text-red-600" : "text-green-600";
             }
-        </script>
 
-        
+            // 1. User Registration
+            document.getElementById("registerForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const username = document.getElementById("username").value.trim();
+                const dailyCap = document.getElementById("dailyCap").value.trim() || "100.00";
+                
+                try {
+                    const response = await fetch("/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, daily_cap: dailyCap })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                    displayMessage("registerMsg", "User registered! Wallet ID: " + data.wallet_id);
+                    } else {
+                    displayMessage("registerMsg", data.error, true);
+                    }
+                } catch (error) {
+                    displayMessage("registerMsg", error.message, true);
+                }
+            });
+
+
+        </script>
     </body>
 
 </html>
