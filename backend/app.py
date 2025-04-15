@@ -59,7 +59,7 @@ class Transaction(db.Model):
     Transaction Model for Deposits and expenses.
     """
     id = db.Column(db.Integer, primary_key=True)
-    wallet_id = db.Column(db.Integer, db.Foreign('wallet.id'), nullable=False)
+    wallet_id = db.Column(db.Integer, db.ForeignKey('wallet.id'), nullable=False)
     amount = db.Column(db.Numeric(10, 2), nullable=False)
     transaction_type = db.Column(db.String(20), nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
