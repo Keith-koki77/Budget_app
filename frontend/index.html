@@ -182,10 +182,40 @@
                 }
             });
 
-            
-
-
+            // 4. Fetch Transaction History
+            document.getElementById("transactionForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const wallet_id = document.getElementById("transWalletId").value.trim();
+                const transDate = document.getElementById("transDate").value.trim();
+                let url = "/transactions/" + wallet_id;
+                if (transDate) {
+                    url += "?date=" + transDate;
+                }
+                
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    const transList = document.getElementById("transList");
+                    transList.innerHTML = "";
+                    if (response.ok) {
+                    if (data.length === 0) {
+                        transList.innerHTML = "<li>No transactions found.</li>";
+                    } else {
+                        data.forEach((t) => {
+                        const li = document.createElement("li");
+                        li.className = "border p-2 rounded";
+                        li.innerHTML = `<strong>${t.type.toUpperCase()}</strong>: $${t.amount} - ${t.description} <br> <small>${new Date(t.timestamp).toLocaleString()}</small>`;
+                        transList.appendChild(li);
+                        });
+                    }
+                    displayMessage("transactionMsg", "Transactions retrieved successfully.");
+                    } else {
+                    displayMessage("transactionMsg", data.error, true);
+                    }
+                } catch (error) {
+                    displayMessage("transactionMsg", error.message, true);
+                }
+            });
         </script>
     </body>
-
 </html>
