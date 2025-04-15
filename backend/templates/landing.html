@@ -181,6 +181,13 @@
                 showSlide(currentSlide);
             });
 
+            // Auto Slide every slide duration
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }, slideDuration);
+            
+
         </script>
     </body>
 </html>
