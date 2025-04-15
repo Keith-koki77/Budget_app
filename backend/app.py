@@ -50,7 +50,7 @@ class Wallet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     balance = db.Column(db.Numeric(10, 2), nullable=False, default=0)
-    daily_cap = db.Column(db.Number(10, 2), nullable=False, default=100)
+    daily_cap = db.Column(db.Numeric(10, 2), nullable=False, default=100)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     transactions = db.relationship('Transaction', backref='wallet', cascade="all, delete-orphan", lazy=True)
 
