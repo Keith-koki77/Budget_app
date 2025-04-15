@@ -81,3 +81,22 @@ def get_daily_expense(wallet_id, for_date):
         db.func.date(Transaction.timestamp) == for_date        
     ).scalar()
     return Decimal(daily_total)
+
+
+# -------------------------------------
+# API ENDPOINTS
+# -------------------------------------
+
+@app.route('/register', methods=['POST'])
+def register():
+    """
+    Register a new user.
+    Expected JSON payload:
+        { "username": "user1", "daily_cap": "150.00"} # Daily cap is optional (default=100)
+    """
+    data = request.get_json() or {}
+    username = data.get("username")
+    daily_cap = data.get("daily_cap", "100.00")
+
+    if not username:
+        return jsonify({"error": "username is required"}), 400
