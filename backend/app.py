@@ -39,7 +39,7 @@ class User(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcown)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     # One-to-one relationship with Wallet
     wallet = db.relationship('Wallet', backref='user', uselist=False, cascade="all, delete-orphan")
 
