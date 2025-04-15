@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Budgeting App</title>
+        <!-- Tailwind CSS via CDN -->
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <!-- Custom colors using Tailwind configuration inline -->
+        <style>
+            /* Custom utility classes for our red, yellow and white theme */
+            .bg-brand-red { background-color: #e3342f; }   /* A strong red */
+            .text-brand-yellow { color: #ffed4a; }         /* A bright yellow */
+            .bg-brand-yellow { background-color: #ffed4a; }
+            .bg-brand-white { background-color: #ffffff; }
+        </style>
+    </head>
+
+    <body class="bg-brand-white text-gray-800">
+        <!-- Navigation Bar -->
+        <nav class="bg-brand-red text-brand-yellow p-4">
+            <h1 class="text-2xl font-bold">Budgeting App</h1>
+        </nav>
+
+        <div class="container mx-auto p-4">
+            <!-- Registration Form -->
+            <div id="registration" class="mb-8 border p-4 rounded shadow">
+                <h2 class="text-xl font-semibold mb-4">User Registration</h2>
+                <form id="registerForm" class="space-y-4">
+                  <div>
+                    <label for="username" class="block font-medium">Username:</label>
+                    <input type="text" id="username" required class="w-full border rounded px-2 py-1">
+                  </div>
+                  <div>
+                    <label for="dailyCap" class="block font-medium">Daily Cap (optional):</label>
+                    <input type="number" step="0.01" id="dailyCap" placeholder="100.00" class="w-full border rounded px-2 py-1">
+                  </div>
+                  <button type="submit" class="bg-brand-red text-brand-yellow px-4 py-2 rounded hover:opacity-90">Register</button>
+                </form>
+                <div id="registerMsg" class="mt-2 text-sm"></div>
+            </div>
+        </div>
+    </body>
+
+</html>
