@@ -20,6 +20,8 @@ from datetime import datetime, date
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
+from flask import render_template
+
 # Initialize Flask app and configure the SQLite database
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://budgeting_app.db'
@@ -86,6 +88,10 @@ def get_daily_expense(wallet_id, for_date):
 # -------------------------------------
 # API ENDPOINTS
 # -------------------------------------
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/register', methods=['POST'])
 def register():
