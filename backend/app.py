@@ -24,7 +24,7 @@ from flask import render_template
 
 # Initialize Flask app and configure the SQLite database
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://budgeting_app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budgeting_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
