@@ -205,3 +205,19 @@ def spend():
             "already_spent": str(current_daily_spent)
         }), 400
     
+    # Deduct the expense from the wallet and record the transaction
+    wallet.balance -= amount_dec
+    transaction = Transaction(
+        wallet_id=wallet.id,
+        amount=amount_dec,
+        transaction_type='expense',
+        description=description,\
+        timestamp=datetime.utcnow()
+    )
+    db.session.add(transaction)
+    db.session.commit()
+
+    return jsonify({
+        "message": "Expense recorded successfully",
+        "new_balance": str(wallet.balance)
+    }), 200
