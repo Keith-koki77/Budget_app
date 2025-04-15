@@ -82,7 +82,25 @@
             </form>
             <div id="expenseMsg" class="mt-2 text-sm"></div>
         </div>
-        
+
+        <!-- Transaction History -->
+        <div id="transactions" class="mb-8 border p-4 rounded shadow">
+            <h2 class="text-xl font-semibold mb-4">Transaction History</h2>
+            <form id="transactionForm" class="space-y-4">
+              <div>
+                <label for="transWalletId" class="block font-medium">Wallet ID:</label>
+                <input type="number" id="transWalletId" required class="w-full border rounded px-2 py-1">
+              </div>
+              <div>
+                <label for="transDate" class="block font-medium">Date (YYYY-MM-DD, optional):</label>
+                <input type="text" id="transDate" placeholder="2025-04-15" class="w-full border rounded px-2 py-1">
+              </div>
+              <button type="submit" class="bg-brand-red text-brand-yellow px-4 py-2 rounded hover:opacity-90">View Transactions</button>
+            </form>
+            <div id="transactionMsg" class="mt-2 text-sm"></div>
+            <ul id="transList" class="mt-4 space-y-2"></ul>
+          </div>
+        </div>
     </body>
 
 </html>
