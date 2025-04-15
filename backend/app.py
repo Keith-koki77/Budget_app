@@ -100,3 +100,8 @@ def register():
 
     if not username:
         return jsonify({"error": "username is required"}), 400
+    
+    # Create and save the new user
+    user = User(username=username)
+    db.session.add(user)
+    db.session.commit()
