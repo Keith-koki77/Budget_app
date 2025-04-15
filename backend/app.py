@@ -90,6 +90,10 @@ def get_daily_expense(wallet_id, for_date):
 # -------------------------------------
 
 @app.route('/')
+def landing():
+    return render_template('landing.html')
+
+@app.route('/home')
 def home():
     return render_template('index.html')
 
