@@ -40,6 +40,27 @@
                 <div id="registerMsg" class="mt-2 text-sm"></div>
             </div>
         </div>
+
+        <!-- Deposit Form -->
+        <div id="deposit" class="mb-8 border p-4 rounded shadow">
+            <h2 class="text-xl font-semibold mb-4">Deposit Funds</h2>
+            <form id="depositForm" class="space-y-4">
+              <div>
+                <label for="depositWalletId" class="block font-medium">Wallet ID:</label>
+                <input type="number" id="depositWalletId" required class="w-full border rounded px-2 py-1">
+              </div>
+              <div>
+                <label for="provider" class="block font-medium">Provider (paypal or bank):</label>
+                <input type="text" id="provider" placeholder="paypal" required class="w-full border rounded px-2 py-1">
+              </div>
+              <div>
+                <label for="depositAmount" class="block font-medium">Amount:</label>
+                <input type="number" step="0.01" id="depositAmount" required class="w-full border rounded px-2 py-1">
+              </div>
+              <button type="submit" class="bg-brand-red text-brand-yellow px-4 py-2 rounded hover:opacity-90">Deposit</button>
+            </form>
+            <div id="depositMsg" class="mt-2 text-sm"></div>
+        </div>
     </body>
 
 </html>
