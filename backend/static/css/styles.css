@@ -102,6 +102,7 @@ cite {
   cursor: pointer;
   transition: background-color var(--transition-medium), color var(--transition-medium), transform var(--transition-fast), box-shadow var(--transition-medium);
   box-shadow: var(--box-shadow-light);
+  margin-top: 10px;
 }
 
 .btn:hover, .btn:focus {
@@ -220,6 +221,19 @@ header nav a:focus {
     display: none; /* No underline animation for button */
 }
 
+.content-image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 0px; /* Adjust gap as needed */
+  align-items: center; /* Vertically align items in the center */
+  padding: 20px; /* Optional: Add some padding */
+}
+
+.text-content {
+  /* Optional: Style the text content */
+  padding-left: 20px; /* Add some space between text and image */
+}
+
 .full-width-image-section {
   overflow: hidden;
   max-height: 600px; /* Adjust this value as needed */
@@ -230,7 +244,7 @@ header nav a:focus {
   display: block;
   width: 100%;
   height: 100%; /* Make the image fill the container height */
-  object-fit: cover; /* or contain, depending on your preference */
+  object-fit:contain; /* or contain, depending on your preference */
   border-radius: 20px;
 }
 
@@ -403,6 +417,15 @@ footer p {
 
   .slide-content {
       padding: calc(var(--spacing-unit) * 5); /* More padding on larger slides */
+  }
+
+  .content-image-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .text-content {
+    padding-right: 0;
   }
 }
 
