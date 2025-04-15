@@ -347,9 +347,9 @@ header nav a:focus {
 }
 
 .partner-item img {
-  max-height: 50px;
+  max-height: 80px;
   width: auto; /* Maintain aspect ratio */
-  filter: grayscale(100%) opacity(70%); /* Start desaturated and slightly transparent */
+  /*filter: grayscale(100%) opacity(70%); /* Start desaturated and slightly transparent */
   transition: filter var(--transition-medium), opacity var(--transition-medium);
 }
 
