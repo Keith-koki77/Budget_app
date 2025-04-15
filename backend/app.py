@@ -147,3 +147,22 @@ def deposit():
     except Exception:
         return jsonify({"error": "Invalid amount format"}), 400
     
+    # Update the wallet balance and record the deposit transaction
+    wallet.balance += amount_dec
+    transaction = Transaction(
+        wallet_id=wallet.id,
+        amount=amount_dec,
+        transaction_type='deposit',
+        provider=provider,
+        description=f"Deposit via {provider}",
+        timestamp=datetime.utcnow()
+    )
+    db.session.add(transaction)
+    db.session.commit()
+
+    return jsonify({
+        "message": "Deposit successful",
+        "new_balance": str(wallet.balance)
+    }), 200
+
+    
