@@ -63,3 +63,21 @@ class Transaction(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
     description = db.Column(db.String(255))
     provider = db.Column(db.String(50))
+
+
+# --------------------------------
+# HELPER FUNCTIONS
+# --------------------------------
+
+def get_daily_expense(wallet_id, for_date):
+    """
+    Return the Total Expense for a given wallet on the specified date.
+    """
+    daily_total = db.session.query(
+        db.func.coalesce(db.func.sum(Transaction.amount), 0)
+    ).filter(
+        Transaction.wallet_id == wallet_id,
+        Transaction.transaction_type == 'expense',
+        db.func.date(Transaction.timestamp) == for_date        
+    ).scalar()
+    return Decimal(daily_total)
